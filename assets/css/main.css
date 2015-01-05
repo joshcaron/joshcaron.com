@@ -4,6 +4,12 @@ html, body {
 }
 
 .content {
+	font-family: 'brandon-grotesque', 'Helvetica', sans-serif;
+	width: 90%;
+	margin: auto;
+}
+
+.in-progress {
 	position: absolute;
 	margin: auto;
 	padding: 0 10px 0 10px;
@@ -13,21 +19,21 @@ html, body {
 	font-family: 'brandon-grotesque', 'Helvetica', sans-serif;
 }
 
-.wrecking-ball {
+.in-progress .wrecking-ball {
 	float: left;
 	margin-top: -120px;
-	-webkit-shape-outside: url('/images/wrecking_ball.png');
+	-webkit-shape-outside: url('/assets/images/wrecking_ball.png');
 	-webkit-shape-margin: 2em;
-	shape-outside: url('/images/wrecking_ball.png');
+	shape-outside: url('/assets/images/wrecking_ball.png');
 	shape-margin: 2em;
 }
 
-.title {
+.in-progress .title {
 	margin-left: -50px;
 	font-weight: 400;
 	letter-spacing: -1px;
 }
 
-.tag {
+.in-progress .tag {
 	font-weight: 200;
 }
