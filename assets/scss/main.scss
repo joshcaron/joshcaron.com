@@ -3,10 +3,49 @@ $light: #B9CBFF;
 $highlight: #6D92FF;
 $faded: #5D667F;
 $main: #5775CC;
+$black: #323232;
+
+$tablet-max: 1024px;
+$tablet-min: 745px;
+
+$mobile-landscape-min: 620px;
+
+@mixin desktop-property($prop, $val) {
+	@media screen and (min-width: $tablet-max + 1) {
+		#{prop}: $val;
+	}
+}
+
+@mixin tablet-property($prop, $val) {
+	@media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+		#{$prop}: $val;
+	}
+}
+
+@mixin mobile-property($prop, $val) {
+	@media screen and (max-width: $tablet-min - 1) {
+		#{$prop}: $val;
+	}
+}
+
+@mixin mobile-portrait-property($prop, $val) {
+	@media screen and (max-width: $mobile-landscape-min - 1) {
+		#{$prop}: $val;
+	}
+}
 
 html, body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
+}
+
+html {
+	background-image: url('/assets/images/forest.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	@include mobile-property(background-image, none);
 }
 
 a {
@@ -16,16 +55,40 @@ a {
 	&:visited {
 		color: $highlight;
 	}
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
-.container {
-	width: 90%;
-	margin: auto;
+
+h1, h2, h3, h4, h5, h6, .heading, .title {
 	font-family: 'brandon-grotesque', 'Helvetica', sans-serif;
+}
+
+p, span, div {
+	font-family: 'jaf-bernina-sans', 'Times', serif;
+	font-weight: 300;
+	font-size: 1.25rem;
+	color: $black;
+}
+
+.container {
+	width: 50%;
+	transition: width .5s, padding .5s;
+	margin: auto;
+	min-height: 100%;
+	opacity: 0.95;
+	background-color: #FFF;
+	padding: 0 5% 0 5%;
+	@include tablet-property(width, 85%);
+	@include mobile-property(width, 90%);
+	@include mobile-property(padding, 0 5%);
 
 	.heading {
 		border-bottom: solid 1px #CCC;
 		width: 100%;
-		background-color: #FFF;
+		color: $black;
+		@include mobile-portrait-property(text-align, center);
 
 		.name {
 			font-size: 2.5rem;
@@ -34,58 +97,88 @@ a {
 			display: inline-block;
 			margin-right: 2rem;
 			margin-bottom: 0;
+			@include mobile-portrait-property(margin, 0 2rem);
+
+			a {
+				color: #000;
+
+				&:visited {
+					color: #000;
+				}
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
 		}
 
 		nav {
 			position: relative;
 			display: inline-block;
 			text-transform: uppercase;
+
 			ul {
 				list-style-type: none;
 				padding: 0;
 				margin: 0;
+
 				li {
 					font-size: 1.25rem;
 					display: inline-block;
-					margin-right: 1rem;
-					margin-bottom: 1rem;
 					margin: .5rem 1rem 0 0;
+					@include mobile-property(font-size, 1rem);
+					@include mobile-property(margin, .4rem);
 				}
 			}
 		}
 	}
 
+
 	.content {
-		// margin-top: 5.5rem;
+		font-size: 1.5rem;
+		line-height: 2rem;
+		width: 100%;
+		padding: 0.5rem 0;
+
+		.jobs {
+			.job {
+				position: relative;
+				margin-top: 1.5rem;
+				margin-bottom: 1.5rem;
+
+				.title {
+					width: 100%;
+
+					.company-name {
+						display: inline-block;
+						margin: 0;
+						font-weight: 400;
+					}
+
+					.small-text {
+						text-transform: uppercase;
+						font-size: 1rem;
+						margin-left: 2rem;
+						color: #888;
+						display: none;
+					}
+				}
+
+				ul.tags {
+					list-style-type: none;
+					padding: 0;
+					font-size: .9rem;
+
+					li {
+						display: inline-block;
+						border: solid 1px #AAA;
+						padding: 0 .5rem;
+						border-radius: 5px;
+						margin-bottom: .25rem;
+						margin-right: .25rem;
+					}
+				}
+			}
+		}
 	}
-}
-
-
-.in-progress {
-	position: absolute;
-	margin: auto;
-	padding: 0 10px 0 10px;
-	left: 0;
-	right: 0;
-	max-width: 500px;
-	font-family: 'brandon-grotesque', 'Helvetica', sans-serif;
-}
-
-.in-progress .wrecking-ball {
-	float: left;
-	margin-top: -120px;
-	-webkit-shape-outside: url('/assets/images/wrecking_ball.png');
-	-webkit-shape-margin: 2em;
-	shape-outside: url('/assets/images/wrecking_ball.png');
-	shape-margin: 2em;
-}
-
-.in-progress .title {
-	margin-left: -50px;
-	font-weight: 400;
-	letter-spacing: -1px;
-}
-
-.in-progress .tag {
-	font-weight: 200;
 }
