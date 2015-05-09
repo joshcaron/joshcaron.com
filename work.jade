@@ -1,0 +1,13 @@
+.jobs
+	- for job in public.work._data.globals.jobs
+		div(class="job #{job.slug}")
+			.title
+				h2.company-name #{job.company}
+				span.small-text #{job.time.start} - #{job.time.end}
+			.description
+				//- A bit of a hack, but it works!			
+				- var path = "work/" + job.slug
+				!= partial(path)
+			ul.tags
+				- for tag in job.tags
+					li #{tag}

@@ -1,0 +1,40 @@
+{
+	"globals": {
+		"jobs": [
+			{
+				"company": "Apple, Inc.",
+				"slug": "apple",
+				"time": {
+					"start": "July 2014",
+					"end": "Present"
+				},
+				"tags": [
+					"PHP",
+					"Oracle Enterprise Linux",
+					"MySQL",
+					"Python",
+					"Apache",
+					"Database Design"
+					]
+			},
+
+			{
+				"company": "SmarterTravel",
+				"slug": "smarter-travel",
+				"time": {
+					"start": "July 2013",
+					"end": "December 2013"
+				},
+				"tags": [
+					"PHP",
+					"HTML",
+					"CSS",
+					"MySQL",
+					"Javascript",
+					"Backbone.js",
+					"SASS"
+				]
+			}
+		]
+	}
+}

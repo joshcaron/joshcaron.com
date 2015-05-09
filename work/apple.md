@@ -1,0 +1,1 @@
+My second co-op was with Apple, working on their Hardware Diagnostics team.
